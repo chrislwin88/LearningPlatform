@@ -1,0 +1,63 @@
+[START: Video URL or Local Video File]
+          |
+          v
+( 1. DATA INGESTION )
+Fetch via API or Extract via Audio-to-Text
+          |
+          +-----> [State: Raw JSON (Messy Text + Timestamps)]
+          |
+          v
+( 2. PREPROCESSING & DECOUPLING )
+Strip filler words and separate text from time metadata
+          |
+          +-----> PATH A: [State: Timestamp Background Index]
+          |           |
+          |           v (Hold in Memory)
+          |
+          +-----> PATH B: [State: Clean Text Corpus]
+                      |
+                      v
+( 3. SEMANTIC BOUNDARY DETECTION )
+Feed 'Path B' to LLM. Scan sequentially for transitions.
+                      |
+                      v
+            < Topic Shift Detected? >
+              /                  \
+          [ NO ]                [ YES ]
+            |                      |
+      ( Continue )        ( Segment Text Block )
+      ( Scanning )                 |
+            \                      /
+             ----------------------
+                      |
+                      v
+( 4. THEMATIC TITLING )
+LLM summarizes each segmented block into a short title
+                      |
+                      +-----> [State: Array of Chapter Titles]
+                      |
+                      v
+( 5. TIMESTAMP RE-INTEGRATION )
+Match the first sentence of each titled block with 'Path A'
+(the Timestamp Background Index) to lock in the start time.
+                      |
+                      +-----> [State: Draft Chapters (HH:MM:SS - Title)]
+                      |
+                      v
+( 6. CHRONOLOGICAL QA & VALIDATION )
+Check for sequential order, overlaps, and formatting.
+                      |
+                      v
+           < Validation Passed? >
+             /                  \
+         [ NO ]                [ YES ]
+           |                      |
+ ( Auto-Correction / )            |
+ ( Manual Override   )            |
+           |                      |
+           +----------------------+
+                      |
+                      v
+      [FINAL OUTCOME: Publish-Ready Chapter List]
+                      |
+                   [ END ]
