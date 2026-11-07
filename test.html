@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Local Ollama</title>
+  </head>
+  <body>
+    <h1>Local Ollama</h1>
+
+    <label for="model">Model</label>
+    <select id="model">
+      <option value="">Loading models...</option>
+    </select>
+
+    <button id="refresh" type="button">Refresh models</button>
+
+    <p>
+      <label for="input">Prompt</label><br>
+      <textarea id="input" rows="6" cols="60" placeholder="Enter a prompt"></textarea>
+    </p>
+
+    <button id="generate" type="button">Generate</button>
+    <p id="status" role="status">Connecting to Ollama at http://localhost:11434...</p>
+    <pre style="block-size: fit to page" id="output"></pre>
+
+    <script>
+      const modelSelect = document.getElementById('model');
+      const promptInput = document.getElementById('input');
+      const generateButton = document.getElementById('generate');
+      const refreshButton = document.getElementById('refresh');
+      const status = document.getElementById('status');
+      const output = document.getElementById('output');
+      const ollamaUrl = 'http://localhost:11434';
+
+      async function loadModels() {
+        status.textContent = 'Loading models from Ollama...';
+
+        try {
+          const response = await fetch(`${ollamaUrl}/api/tags`);
+
+          if (!response.ok) {
+            throw new Error(`Ollama returned HTTP ${response.status}`);
+          }
+
+          const data = await response.json();
+          modelSelect.replaceChildren();
+
+          for (const model of data.models ?? []) {
+            const option = document.createElement('option');
+            option.value = model.name;
+            option.textContent = model.name;
+            modelSelect.append(option);
+          }
+
+          if (modelSelect.options.length === 0) {
+            status.textContent = 'Ollama is running, but no models are installed. Pull a model with "ollama pull <model>".';
+            return;
+          }
+
+          status.textContent = `Connected. Found ${modelSelect.options.length} model(s).`;
+        } catch (error) {
+          modelSelect.replaceChildren(new Option('No models available', ''));
+          status.textContent = `Could not connect to Ollama: ${error.message}. Make sure Ollama is running and allows this page's origin.`;
+        }
+      }
+
+      async function generate() {
+        const prompt = promptInput.value.trim();
+
+        if (!modelSelect.value) {
+          status.textContent = 'Choose an installed model first.';
+          return;
+        }
+
+        if (!prompt) {
+          status.textContent = 'Enter a prompt first.';
+          return;
+        }
+
+        generateButton.disabled = true;
+        output.textContent = '';
+        status.textContent = 'Generating...';
+
+        try {
+          const response = await fetch(`${ollamaUrl}/api/generate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              model: modelSelect.value,
+              prompt,
+              stream: false
+            })
+          });
+
+          if (!response.ok) {
+            const detail = await response.text();
+            throw new Error(`Ollama returned HTTP ${response.status}${detail ? `: ${detail}` : ''}`);
+          }
+
+          const data = await response.json();
+          output.textContent = data.response ?? '';
+          status.textContent = 'Done.';
+        } catch (error) {
+          status.textContent = `Generation failed: ${error.message}. Check that Ollama is running and the selected model is installed.`;
+        } finally {
+          generateButton.disabled = false;
+        }
+      }
+
+      refreshButton.addEventListener('click', loadModels);
+      generateButton.addEventListener('click', generate);
+      loadModels();
+    </script>
+  </body>
+</html>

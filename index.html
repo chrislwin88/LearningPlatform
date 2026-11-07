@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LearnHub Courses</title>
+    <link rel="stylesheet" href="css/catalog.css">
+  </head>
+  <body>
+    <header class="catalog-header">
+      <a class="catalog-brand" href="index.html">LearnHub LMS</a>
+      <button id="themeToggle" class="theme-toggle" type="button">Dark mode</button>
+    </header>
+    <div class="catalog-layout">
+      <aside class="category-panel">
+        <h1>Explore courses</h1>
+        <nav id="categoryList" aria-label="Course categories"></nav>
+      </aside>
+      <main class="catalog-main">
+        <div class="catalog-heading">
+          <div>
+            <p class="eyebrow">Learning library</p>
+            <h2 id="categoryHeading">All courses</h2>
+          </div>
+          <button id="addCourseButton" class="add-course-button" type="button">
+            <span aria-hidden="true">+</span> Add new course
+          </button>
+        </div>
+        <form id="courseForm" class="course-form" hidden>
+          <label>
+            Course title
+            <input id="courseTitleInput" name="title" maxlength="160" required>
+          </label>
+          <label>
+            Category
+            <select id="courseCategoryInput" name="category" required></select>
+          </label>
+          <div class="course-form-actions">
+            <button type="submit">Create course</button>
+            <button id="cancelCourseButton" type="button">Cancel</button>
+          </div>
+          <p id="formStatus" role="status"></p>
+        </form>
+        <section id="courseGrid" class="course-grid" aria-live="polite"></section>
+      </main>
+    </div>
+    <script src="js/catalog.js"></script>
+  </body>
+</html>

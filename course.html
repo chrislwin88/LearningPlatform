@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title id="documentTitle">Course Player</title>
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("learningPlatformTheme");
+          const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.dataset.theme =
+            savedTheme === "light" || savedTheme === "dark"
+              ? savedTheme
+              : systemPrefersDark
+                ? "dark"
+                : "light";
+        } catch (error) {
+          document.documentElement.dataset.theme = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches
+            ? "dark"
+            : "light";
+          window.themePreferenceError =
+            error instanceof Error ? error.message : "Unknown storage error.";
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="css/course.css?v=responsive-player-1">
+  </head>
+  <body>
+    <header class="header">
+      <a class="brand" href="index.html">LearnHub LMS</a>
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch to dark mode"
+        aria-pressed="false"
+      >
+        <span id="themeIcon" aria-hidden="true">☾</span>
+        <span id="themeLabel">Dark mode</span>
+      </button>
+    </header>
+
+    <div class="container">
+      <aside class="sidebar">
+        <div class="course-panel-header">
+          <button
+            id="sidebarToggle"
+            class="sidebar-toggle"
+            type="button"
+            aria-expanded="true"
+            aria-controls="moduleList"
+            aria-label="Minimize lessons panel"
+            title="Minimize lessons panel"
+          >
+            <svg
+              aria-hidden="true"
+              class="sidebar-toggle-icon"
+              viewBox="0 0 24 24"
+              focusable="false"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          <h3 id="courseTitle"></h3>
+          <div class="course-panel-actions">
+            <button
+              id="lessonEditorToggle"
+              class="icon-button lesson-editor-toggle"
+              type="button"
+              aria-label="Edit lessons"
+              title="Edit lessons"
+            >
+              <span aria-hidden="true">
+                <svg
+                  class="editor-icon"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path>
+                  <path d="m15 5 4 4"></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <p id="courseProgress" class="course-progress"></p>
+        <nav id="moduleList" aria-label="Course lessons"></nav>
+      </aside>
+
+      <main class="main">
+        <section id="videoView" class="learning-view" aria-label="Lesson video">
+          <div class="player-stage">
+            <button
+              id="previousButton"
+              class="lesson-nav lesson-nav--previous"
+              type="button"
+              aria-label="Previous lesson"
+              title="Previous lesson"
+              onclick="previousLesson()"
+            >
+              <span aria-hidden="true">←</span>
+            </button>
+            <div class="video-frame" id="videoFrame">
+              <div id="playerContainer"></div>
+              <div class="explainer-control" id="explainerControl" hidden>
+                <button
+                  id="explainerButton"
+                  class="explainer-button"
+                  type="button"
+                  aria-label="Explain this part of the video"
+                  aria-describedby="explainerBubble"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="explainer-icon"
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                  >
+                    <path d="M9 18h6M10 21h4M8.5 14.5A7 7 0 1 1 15.5 14.5c-.9.7-1.4 1.6-1.5 2.5h-4c-.1-.9-.6-1.8-1.5-2.5Z" />
+                    <path d="M12 3v1M4.93 5.93l.7.7M3 13h1M19.07 5.93l-.7.7M20 13h1" />
+                  </svg>
+                </button>
+                <div
+                  id="explainerBubble"
+                  class="explainer-bubble"
+                  role="status"
+                  aria-live="polite"
+                >
+                  Get a quick explanation of the part you’re watching.
+                </div>
+              </div>
+            </div>
+            <button
+              id="nextButton"
+              class="lesson-nav lesson-nav--next"
+              type="button"
+              aria-label="Next lesson"
+              title="Next lesson"
+              onclick="nextLesson()"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
+
+        <h2 id="title"></h2>
+        <details id="videoDetails" class="video-details" hidden>
+          <summary id="videoDetailsToggle">See video details</summary>
+          <div
+            id="videoDetailsContent"
+            class="video-details-panel"
+            aria-live="polite"
+          ></div>
+        </details>
+        <button
+          id="testKnowledgeButton"
+          class="test-knowledge-button"
+          type="button"
+          aria-controls="activitiesView"
+          aria-expanded="false"
+        >
+          Test Your Knowledge
+        </button>
+
+        <section
+          id="activitiesView"
+          class="learning-view activities-view"
+          aria-label="Lesson activities"
+          hidden
+        >
+          <button
+            id="backToVideoButton"
+            class="back-to-video-button"
+            type="button"
+            aria-controls="videoView"
+            aria-expanded="true"
+          >
+            <span aria-hidden="true">←</span>
+            Back to Video
+          </button>
+          <div id="activities" class="activities"></div>
+        </section>
+
+        <p id="saveStatus" class="save-status" role="status" aria-live="polite"></p>
+      </main>
+    </div>
+    <footer class="site-footer">
+      <p>© 2026 LearnHub LMS. All rights reserved.</p>
+    </footer>
+
+    <script src="js/progress.js"></script>
+    <script src="js/player.js?v=responsive-player-2"></script>
+  </body>
+</html>
