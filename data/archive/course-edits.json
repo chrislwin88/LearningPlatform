@@ -1,0 +1,442 @@
+{
+  "title": "AI Fundamentals",
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Introduction",
+      "description": "Course introduction",
+      "type": "youtube",
+      "videoId": "kyQ0CRkYhy4",
+      "activities": {
+        "legacyResponseTarget": {
+          "quiz": "quiz-introduction-goal",
+          "reflection": "reflection-introduction-goal"
+        },
+        "quizzes": [
+          {
+            "id": "quiz-introduction-goal",
+            "question": "What is a useful first step when learning a new topic?",
+            "options": [
+              "Set a clear learning goal",
+              "Memorize every detail immediately",
+              "Skip the explanations and start guessing"
+            ],
+            "answer": 0,
+            "feedback": "A clear goal gives your learning a direction."
+          },
+          {
+            "id": "quiz-introduction-review",
+            "question": "Why is it useful to pause and review a lesson?",
+            "options": [
+              "It helps connect new ideas with what you already know",
+              "It guarantees you will never forget the topic",
+              "It replaces the need to practice"
+            ],
+            "answer": 0,
+            "feedback": "Reviewing helps reinforce ideas and connect them with prior knowledge."
+          },
+          {
+            "id": "quiz-introduction-practice",
+            "question": "Which approach is most useful when practicing a new skill?",
+            "options": [
+              "Try it, notice what is difficult, and adjust",
+              "Avoid mistakes by never attempting it",
+              "Repeat without paying attention to the result"
+            ],
+            "answer": 0,
+            "feedback": "Practice is most useful when you notice results and adjust your approach."
+          },
+          {
+            "id": "quiz-introduction-breaks",
+            "question": "Why can short breaks help during a study session?",
+            "options": [
+              "They give attention a chance to recover",
+              "They automatically teach the material",
+              "They remove the need to review"
+            ],
+            "answer": 0,
+            "feedback": "A brief break can help restore attention before continuing."
+          },
+          {
+            "id": "quiz-introduction-explanation",
+            "question": "What is a useful way to check whether you understand an idea?",
+            "options": [
+              "Explain it in your own words",
+              "Recognize the page where it appeared",
+              "Read it quickly one more time without thinking"
+            ],
+            "answer": 0,
+            "feedback": "Explaining an idea in your own words helps reveal what you understand."
+          }
+        ],
+        "reflections": [
+          {
+            "id": "reflection-introduction-goal",
+            "prompt": "What do you hope to understand or be able to do after this course?"
+          },
+          {
+            "id": "reflection-introduction-habit",
+            "prompt": "What is one learning habit that helps you stay curious?"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "title": "Neural Networks",
+      "description": "3Blue1Brown",
+      "type": "youtube",
+      "videoId": "aircAruvnKk",
+      "activities": {
+        "legacyResponseTarget": {
+          "quiz": "quiz-neural-network-weights",
+          "reflection": "reflection-neural-network-information"
+        },
+        "quizzes": [
+          {
+            "id": "quiz-neural-network-weights",
+            "question": "What do the connections between neurons in a neural network commonly represent?",
+            "options": [
+              "Adjustable weights that influence signals",
+              "A fixed list of answers",
+              "The order in which videos are played"
+            ],
+            "answer": 0,
+            "feedback": "Connection weights influence how signals are passed through the network."
+          },
+          {
+            "id": "quiz-neural-network-layers",
+            "question": "What is a common role of a hidden layer in a neural network?",
+            "options": [
+              "Transforming input signals into useful intermediate representations",
+              "Storing a complete copy of every training example",
+              "Choosing which video the learner watches next"
+            ],
+            "answer": 0,
+            "feedback": "Hidden layers transform signals as they move from input toward output."
+          },
+          {
+            "id": "quiz-neural-network-neuron",
+            "question": "What does an artificial neuron typically do with its inputs?",
+            "options": [
+              "Combines them using weights and applies an activation function",
+              "Stores them without changing them",
+              "Selects a random video"
+            ],
+            "answer": 0,
+            "feedback": "A neuron combines weighted inputs and applies an activation function."
+          },
+          {
+            "id": "quiz-neural-network-training",
+            "question": "What is a common goal of training a neural network?",
+            "options": [
+              "Adjust its weights to reduce prediction error",
+              "Keep every weight fixed from the start",
+              "Increase the number of labels in the dataset"
+            ],
+            "answer": 0,
+            "feedback": "Training adjusts weights so the network's predictions better match its targets."
+          },
+          {
+            "id": "quiz-neural-network-output",
+            "question": "In a supervised classification task, what does the output layer often represent?",
+            "options": [
+              "Scores or probabilities for possible classes",
+              "The order the training examples were collected",
+              "A copy of the input pixels only"
+            ],
+            "answer": 0,
+            "feedback": "Classification outputs commonly represent scores or probabilities for classes."
+          }
+        ],
+        "reflections": [
+          {
+            "id": "reflection-neural-network-information",
+            "prompt": "In your own words, how does information move through a neural network?"
+          },
+          {
+            "id": "reflection-neural-network-analogy",
+            "prompt": "What everyday process could you compare to signals being transformed through layers?"
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "title": "New lesson",
+      "description": "Video lesson",
+      "type": "youtube",
+      "videoId": "XN3xNJvWXsc",
+      "activities": {
+        "quizzes": [
+          {
+            "id": "quiz-lesson-6-summarize",
+            "question": "What is a useful way to learn from a video lesson?",
+            "options": [
+              "Identify and summarize one of its key ideas",
+              "Skip the video without considering its ideas",
+              "Memorize every detail without understanding it"
+            ],
+            "answer": 0,
+            "feedback": "Summarizing a key idea helps you check your understanding."
+          },
+          {
+            "id": "quiz-lesson-6-explain",
+            "question": "How can you check your understanding of a new idea?",
+            "options": [
+              "Explain the idea in your own words",
+              "Remember only the video's title",
+              "Avoid revisiting concepts that seem difficult"
+            ],
+            "answer": 0,
+            "feedback": "Explaining an idea in your own words helps reveal what you understand."
+          }
+        ],
+        "reflections": [
+          {
+            "id": "reflection-lesson-6-takeaway",
+            "prompt": "What is one idea from this video that you would like to explore further?"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "title": "Deep Dive into LLMs like ChatGPT",
+      "description": "Explains how LLMs like ChatGPT work and how they are built",
+      "type": "youtube",
+      "videoId": "7xTGNNLPyMI",
+      "activities": {
+        "legacyResponseTarget": {
+          "quiz": "quiz-llm-answer-check",
+          "reflection": "reflection-llm-trust"
+        },
+        "quizzes": [
+          {
+            "id": "quiz-llm-answer-check",
+            "question": "What is a sensible way to evaluate a language model's answer?",
+            "options": [
+              "Check important claims against reliable sources",
+              "Assume fluent writing guarantees accuracy",
+              "Use the answer without considering the task"
+            ],
+            "answer": 0,
+            "feedback": "Fluent output can still contain mistakes, so important claims need verification."
+          },
+          {
+            "id": "quiz-llm-limitations",
+            "question": "Why should important model-generated claims be checked?",
+            "options": [
+              "A confident or fluent answer can still be inaccurate",
+              "Models only produce answers when sources are cited",
+              "Checking always makes the answer less reliable"
+            ],
+            "answer": 0,
+            "feedback": "Fluency is not proof of correctness, so important claims need independent checks."
+          },
+          {
+            "id": "quiz-llm-sources",
+            "question": "What is a strong way to verify an important factual claim?",
+            "options": [
+              "Compare it with reliable, relevant sources",
+              "Rely only on how confident the response sounds",
+              "Assume the first search result must be correct"
+            ],
+            "answer": 0,
+            "feedback": "Cross-check important claims against reliable sources that directly support them."
+          },
+          {
+            "id": "quiz-llm-context-window",
+            "question": "What can happen when relevant information is missing from a prompt?",
+            "options": [
+              "The model may give an incomplete or unsuitable response",
+              "The model automatically finds all missing information",
+              "The response is guaranteed to be more accurate"
+            ],
+            "answer": 0,
+            "feedback": "The model can only use information available to it, so missing context can affect its answer."
+          },
+          {
+            "id": "quiz-llm-evaluation",
+            "question": "Which consideration is useful when evaluating a model's answer?",
+            "options": [
+              "Whether the answer is supported by evidence and fits the task",
+              "Whether it uses technical language",
+              "Whether it is longer than other answers"
+            ],
+            "answer": 0,
+            "feedback": "Check evidence and relevance to the task, rather than style or length alone."
+          }
+        ],
+        "reflections": [
+          {
+            "id": "reflection-llm-trust",
+            "prompt": "What question would you ask to check whether a model's explanation is trustworthy?"
+          },
+          {
+            "id": "reflection-llm-source",
+            "prompt": "What sources or evidence would help you verify an important generated answer?"
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "title": "How I use LLMS",
+      "description": "Kaparthy explains how he uses LLMs",
+      "type": "youtube",
+      "videoId": "EWvNQjAaOHw",
+      "activities": {
+        "legacyResponseTarget": {
+          "quiz": "quiz-llm-next-token",
+          "reflection": "reflection-llm-verification"
+        },
+        "quizzes": [
+          {
+            "id": "quiz-llm-next-token",
+            "question": "What does a GPT-style language model generally learn to predict?",
+            "options": [
+              "The next token in a sequence",
+              "The author's identity",
+              "A video's playback speed"
+            ],
+            "answer": 0,
+            "feedback": "Next-token prediction is a core training objective for GPT-style language models."
+          },
+          {
+            "id": "quiz-llm-context",
+            "question": "What is the role of context when a language model generates a response?",
+            "options": [
+              "It informs which likely next token fits the current sequence",
+              "It guarantees every generated statement is factual",
+              "It prevents the model from producing new text"
+            ],
+            "answer": 0,
+            "feedback": "The context influences which next tokens are likely, but does not guarantee factual accuracy."
+          },
+          {
+            "id": "quiz-llm-token",
+            "question": "What is a token in language-model processing?",
+            "options": [
+              "A unit of text such as a word or word fragment",
+              "A guaranteed complete sentence",
+              "A score measuring whether a claim is true"
+            ],
+            "answer": 0,
+            "feedback": "Tokens are text units and may represent words, parts of words, or other symbols."
+          },
+          {
+            "id": "quiz-llm-generation",
+            "question": "How does a text-generating language model commonly produce a response?",
+            "options": [
+              "It predicts and emits tokens sequentially",
+              "It retrieves a complete answer in every case",
+              "It checks every claim against the internet automatically"
+            ],
+            "answer": 0,
+            "feedback": "Many generative language models produce text through sequential token prediction."
+          },
+          {
+            "id": "quiz-llm-fluency",
+            "question": "Does fluent language generation guarantee that an answer is true?",
+            "options": [
+              "No, fluency and factual accuracy are different",
+              "Yes, fluent responses are always verified",
+              "Only if the response is long"
+            ],
+            "answer": 0,
+            "feedback": "A response can sound fluent while still being inaccurate."
+          }
+        ],
+        "reflections": [
+          {
+            "id": "reflection-llm-verification",
+            "prompt": "What is one reason a plausible-sounding generated answer might still be wrong?"
+          },
+          {
+            "id": "reflection-llm-use",
+            "prompt": "What kind of task would you trust a language model to help with, and what would you verify?"
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "title": "Cursor 3.0 - Full Course for Beginners",
+      "description": "Video lesson",
+      "type": "youtube",
+      "videoId": "Tv8mLrLtyxo",
+      "activities": {
+        "quizzes": [
+          {
+            "id": "quiz-lesson-7-summarize",
+            "question": "What is a useful way to learn from a video lesson?",
+            "options": [
+              "Identify and summarize one of its key ideas",
+              "Skip the video without considering its ideas",
+              "Memorize every detail without understanding it"
+            ],
+            "answer": 0,
+            "feedback": "Summarizing a key idea helps you check your understanding."
+          },
+          {
+            "id": "quiz-lesson-7-explain",
+            "question": "How can you check your understanding of a new idea?",
+            "options": [
+              "Explain the idea in your own words",
+              "Remember only the video's title",
+              "Avoid revisiting concepts that seem difficult"
+            ],
+            "answer": 0,
+            "feedback": "Explaining an idea in your own words helps reveal what you understand."
+          }
+        ],
+        "reflections": [
+          {
+            "id": "reflection-lesson-7-takeaway",
+            "prompt": "What is one idea from this video that you would like to explore further?"
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "title": "VS Code Agent Mode",
+      "description": "Video lesson",
+      "type": "youtube",
+      "videoId": "dutyOc_cAEU",
+      "activities": {
+        "quizzes": [
+          {
+            "id": "quiz-lesson-8-summarize",
+            "question": "What is a useful way to learn from a video lesson?",
+            "options": [
+              "Identify and summarize one of its key ideas",
+              "Skip the video without considering its ideas",
+              "Memorize every detail without understanding it"
+            ],
+            "answer": 0,
+            "feedback": "Summarizing a key idea helps you check your understanding."
+          },
+          {
+            "id": "quiz-lesson-8-explain",
+            "question": "How can you check your understanding of a new idea?",
+            "options": [
+              "Explain the idea in your own words",
+              "Remember only the video's title",
+              "Avoid revisiting concepts that seem difficult"
+            ],
+            "answer": 0,
+            "feedback": "Explaining an idea in your own words helps reveal what you understand."
+          }
+        ],
+        "reflections": [
+          {
+            "id": "reflection-lesson-8-takeaway",
+            "prompt": "What is one idea from this video that you would like to explore further?"
+          }
+        ]
+      }
+    }
+  ]
+}
